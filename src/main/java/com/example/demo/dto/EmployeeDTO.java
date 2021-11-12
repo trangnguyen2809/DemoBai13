@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class EmployeeDTO {
     private int id;
     private String fullName;

@@ -39,16 +39,24 @@ public class Employee implements Serializable {
     @Column(name = "employee_count")
     private int employee_count;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "employee")
-    @JoinColumn(name = "id", nullable = false)
+    //    @PrimaryKeyJoinColumn
+//    @JoinColumn(name = "employee_id", nullable = false)
+
+    @OneToOne(cascade = CascadeType.ALL, optional = false, mappedBy = "employee")
     private Fresher fresher;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "employee")
-    @JoinColumn(name = "id", nullable = false)
+//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "employee")
+//    @JoinColumn(name = "employee_id", nullable = false)
+//    private Experience experience;
+//
+//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "employee")
+//    @JoinColumn(name = "employee_id", nullable = false)
+//    private Intern intern;
+
+    @OneToOne(mappedBy = "employee")
     private Experience experience;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "employee")
-    @JoinColumn(name = "id", nullable = false)
+    @OneToOne(mappedBy = "employee")
     private Intern intern;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")

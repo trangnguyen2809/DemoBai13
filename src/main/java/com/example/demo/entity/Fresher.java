@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,7 +38,17 @@ public class Fresher implements Serializable {
     @Column(name = "education")
     private String education;
 
-    @OneToOne
-    @JoinColumn(name = "employee_id", nullable = false)
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+//    private Employee employee;
+
+//    @OneToOne
+//    @MapsId
+//    @JoinColumn(name = "employee_id")
+//    private Employee employee;
+
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
+
 }

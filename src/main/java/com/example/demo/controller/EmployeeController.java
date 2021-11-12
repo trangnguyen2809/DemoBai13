@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.EmployeeDTO;
-import com.example.demo.entity.Employee;
 import com.example.demo.services.EmployeeService;
 import org.omg.CORBA.portable.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;

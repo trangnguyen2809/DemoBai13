@@ -26,8 +26,8 @@ public class Intern implements Serializable {
 //    @OneToOne
 //    private Employee employee;
 
-    @JoinColumn(name = "employee_id", nullable = false)
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
 
     @Column(name = "major")

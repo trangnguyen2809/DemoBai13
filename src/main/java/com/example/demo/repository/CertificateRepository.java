@@ -14,6 +14,6 @@ public interface CertificateRepository extends JpaRepository<Certificate, Intege
     @Query("SELECT c FROM Certificate c WHERE c.id = :id")
     Certificate getCertificateById(@Param("id") Integer id);
 
-    @Query("SELECT new com.example.demo.dto.CertificateDTO(c.id, c.certificateName, c.certificateRank, c.certificatedDate, c.employee.fullName) FROM Certificate c WHERE c.employee.id = :id")
+    @Query("SELECT new com.example.demo.dto.CertificateDTO(c.id, c.certificateName, c.certificateRank, c.certificatedDate, c.employee.id) FROM Certificate c WHERE c.employee.id = :id")
     List<CertificateDTO> getListCertificateByEmployeeId(@Param("id") Integer id);
 }
