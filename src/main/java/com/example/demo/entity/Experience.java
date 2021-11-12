@@ -24,12 +24,12 @@ public class Experience implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+//    @OneToOne
+//    private Employee employee;
+
+    @JoinColumn(name = "employee_id", nullable = false)
     @OneToOne
     private Employee employee;
-
-//    @JoinColumn(name = "employee_id", nullable = false)
-//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "experience")
-//    private Employee employee;
 
     @Column(name = "expInYear")
     private int expInYear;

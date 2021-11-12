@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,11 +25,7 @@ public class Fresher implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne
-    private Employee employee;
-//
-//    @JoinColumn(name = "employee_id", nullable = false)
-//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "fresher")
+//    @OneToOne
 //    private Employee employee;
 
     @Column(name = "graduation_date")
@@ -39,4 +36,8 @@ public class Fresher implements Serializable {
 
     @Column(name = "education")
     private String education;
+
+    @OneToOne
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 }

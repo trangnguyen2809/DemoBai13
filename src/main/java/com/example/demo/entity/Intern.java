@@ -23,12 +23,12 @@ public class Intern implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+//    @OneToOne
+//    private Employee employee;
+
+    @JoinColumn(name = "employee_id", nullable = false)
     @OneToOne
     private Employee employee;
-
-//    @JoinColumn(name = "employee_id", nullable = false)
-//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "intern")
-//    private Employee employee;
 
     @Column(name = "major")
     private String major;

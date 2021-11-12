@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -37,15 +39,19 @@ public class Employee implements Serializable {
     @Column(name = "employee_count")
     private int employee_count;
 
-//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "fresher")
-//    private Employee fresher;
-//
-//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "experience")
-//    private Experience experience;
-//
-//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "intern")
-//    private Intern intern;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "employee")
+    @JoinColumn(name = "id", nullable = false)
+    private Fresher fresher;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "employee")
+    @JoinColumn(name = "id", nullable = false)
+    private Experience experience;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "employee")
+    @JoinColumn(name = "id", nullable = false)
+    private Intern intern;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+    @JsonIgnore
     private List<Certificate> certificates;
 }

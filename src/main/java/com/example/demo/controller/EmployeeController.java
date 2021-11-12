@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.EmployeeDTO;
 import com.example.demo.entity.Employee;
 import com.example.demo.services.EmployeeService;
 import org.omg.CORBA.portable.ApplicationException;
@@ -16,8 +17,8 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @GetMapping("/getEmployeeById/{id}")
-    public Employee getEmployeeById(@PathVariable Integer id) throws ApplicationException {
-        Employee c = employeeService.getEmployeeById(id);
+    public EmployeeDTO getEmployeeById(@PathVariable Integer id) throws ApplicationException {
+        EmployeeDTO c = employeeService.getEmployeeById(id);
         return c;
     }
 }
